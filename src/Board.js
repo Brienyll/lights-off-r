@@ -73,7 +73,17 @@ class Board extends Component {
   /** Render game board or winning message. */
 
   render() {
-    
+    return (
+      <table className="Board">
+        <tbody>
+          <tr>
+            <Cell isLit={true}/>
+            <Cell isLit={false}/>
+            <Cell isLit={true}/>
+          </tr>
+        </tbody>
+      </table>
+    )
     // if the game is won, just show a winning msg & render nothing else
 
     // TODO
