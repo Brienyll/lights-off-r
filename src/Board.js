@@ -90,8 +90,20 @@ class Board extends Component {
   /** Render game board or winning message. */
 
   render() {
+    let tableBoard = [];
+    for (let y = 0; y < this.props.nrows; y++) {
+      let row = [];
+      for (let x = 0; x < this.props.ncols; x++) {
+        row.push(<Cell isLit={this.state.board[y][x]}/>)
+      }
+      tableBoard.push(<tr>{row}</tr>);
+    }
     return (
-      <h1>Lights off </h1>
+      <table className="Board">
+        <tbody>
+          {tableBoard}
+        </tbody>
+      </table>
     )
     // if the game is won, just show a winning msg & render nothing else
 
