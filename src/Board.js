@@ -34,7 +34,7 @@ class Board extends Component {
   static defaultProps = {
     nrows: 5,
     ncols: 5,
-    chanceLightStartsOn: 0.25
+    chanceLightStartsOn: 0.1
   };
 
   constructor(props) {
@@ -89,7 +89,7 @@ class Board extends Component {
 
     // win when every cell is turned off
     // TODO: determine is the game has been won\
-    let hasWon = false;
+    let hasWon = board.every(row => row.every(cell => !cell));
     this.setState({board:board, hasWon:hasWon});
   }
 
@@ -97,6 +97,10 @@ class Board extends Component {
   /** Render game board or winning message. */
 
   render() {
+    if (this.state.hasWon) {
+      return <h1> WIN! </h1>
+    }
+
     let tableBoard = [];
     for (let y = 0; y < this.props.nrows; y++) {
       let row = [];
